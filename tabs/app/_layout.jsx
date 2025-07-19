@@ -14,13 +14,6 @@ export default function RootLayout() {
       >
         
         <Stack.Screen name="(tabs)" options={{ headerTitle: "Home" }} />
-        
-
-{/* O ERRO DEVE SER O ULTIMO  */}
-        {/* <Stack.Screen
-          name="+not-found"
-          options={{ headerTitle: "Erro" }}
-        /> */}
      
       </Stack>
     </>
