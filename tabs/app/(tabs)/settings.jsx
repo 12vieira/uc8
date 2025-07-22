@@ -1,9 +1,10 @@
+
 import {Text, View, StyleSheet} from 'react-native'
 
 export default function Home(){
     return(
         <View style={styles.container}>
-            <Text>Tela de Pesquisa</Text>
+            <Text>Configurações</Text>
         </View>
     )
 }
