@@ -1,7 +1,6 @@
 import {View, Text, StyleSheet} from 'react-native'
 import DraggbleSquare from '../components/DraggbleSquare'
 
-
 export default function HomeScreen(){
     return (
         <View style={styles.container}>
@@ -10,7 +9,6 @@ export default function HomeScreen(){
         </View>
     )
 }
-
 
 const styles = StyleSheet.create({
     container:{
