@@ -7,71 +7,93 @@ import Animated, {
   interpolate,
 } from "react-native-reanimated";
 
-export default function DraggbleSquare(){
-    
-    const translateX = useSharedValue(0);
+export default function DraggbleSquare() {
+  const translateX = useSharedValue(0);
+  const translateY = useSharedValue(0);
+  const startX = useSharedValue(0);
+  const startY = useSharedValue(0);
 
-    const translateY = useSharedValue(0);
+  const scale = useSharedValue(1);
+  const rotation = useSharedValue(0);
+  const backgroundColor = useSharedValue("#3498db");
 
-    const startX = useSharedValue(0);
+  //Gesto de Arrastar (Pan)
 
-    const startY = useSharedValue(0);
+  const panGesture = Gesture.Pan()
 
-    const scale = useSharedValue(1);
+    .onStart(() => {
+      startX.value = translateX.value;
+      startY.value = translateY.value;
+    })
 
-    const rotation = useSharedValue(0);
+    .onUpdate((event) => {
+      translateX.value = startX.value + event.translationX;
+      translateY.value = startY.value + event.translationY;
+    })
 
-    const backgroundColor = useSharedValue('#3498db')
+    .onEnd(() => {
+      translateX.value = withSpring(translateX.value);
+      translateY.value = withSpring(translateY.value);
+    });
 
+  //fim do gesto Pan
 
-    const panGesture = Gesture.Pan()
-        .onStart(() => {
-            startX.value = translateX.value;
-            startY.value = translateY.value;
-        })
-        .onUpdate((event) => {
+  //Gesto de toque(tap)
 
-            translateX.value = startX.value + event.translationX;
-            translateY.value = startY.value + event.translationY;
-        })
-        .onEnd(() => {
-            translateX.value = withSpring(translateX.value);
-            translateY.value = withSpring(translateY.value);
-        });
-        
-        const animatedStyle = useAnimatedStyle(() => ({
-            transform:[
-                {translateX: translateX.value},
-                {translateY: translateY.value}
-            ],
-            backgroundColor: backgroundColor.value,
-        }))
-        
-        const tapGesture = Gesture.Tap().onEnd(()=>{
-            backgroundColor.value = backgroundColor.value === "#3498db" ? "#e74c3c" : "#3498db"
-        });
-        
-        const composedGesture = Gesture.Simultaneous(
-            Gesture.Exclusive(panGesture, tapGesture),
-            // pinchGesture,
-            // rotationGesture,
-        );
-    return(
-        <GestureDetector gesture={composedGesture}>
-            <Animated.View style={[styles.square, animatedStyle]}/>
-        </GestureDetector>
-    )
+  const tapGesture = Gesture.Tap().onEnd(() => {
+    backgroundColor.value =
+      backgroundColor.value === "#3498db" ? "#e74c3c" : "#3498db";
+  });
+
+  //fim do gesto Tap
+
+  // Inicio gesto de pinça(zoom)
+
+  const pinchGesture = Gesture.Pinch().onUpdate((event) => {
+    scale.value = interpolate(event.scale, [0.5, 3], [0.5, 3]);
+  });
+
+  //Fim do gesto pinça
+
+  //Início Gesto rotação
+
+  const rotationGesture = Gesture.Rotation().onUpdate((event) => {
+    rotation.value = event.rotation;
+  })
+
+  const composedGesture = Gesture.Simultaneous(
+    Gesture.Exclusive(panGesture, tapGesture),
+    pinchGesture,
+    rotationGesture
+  );
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [
+      { translateX: translateX.value },
+      { translateY: translateY.value },
+
+      {scale: scale.value},
+      {rotateZ: `${rotation.value}rad`}
+    ],
+    backgroundColor: backgroundColor.value,
+  }));
+
+  return (
+    <GestureDetector gesture={composedGesture}>
+      <Animated.View style={[styles.square, animatedStyle]} />
+    </GestureDetector>
+  );
 }
 
 const styles = StyleSheet.create({
-    square:{
-        width: 100,
-        height: 100,
-        borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-    },
-})
+  square: {
+    width: 100,
+    height: 100,
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+});

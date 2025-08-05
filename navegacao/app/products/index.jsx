@@ -1,8 +1,11 @@
 import {Text, View, Pressable, StyleSheet } from 'react-native'
 import { Link, router } from 'expo-router'
 import { styles } from '../../styles/styles'
-
+// 
 export default function Products(){
+
+    // Função para navegar de volta para a tela inicial
+    // O expo-router permite navegar entre telas de forma declarativa
     const goToHome = () => {
         router.navigate('/')
     }
