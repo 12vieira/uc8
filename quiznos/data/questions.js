@@ -20,6 +20,16 @@ export default [
     resposta: "Escrever sobre o folclore e a cultura popular brasileira"
   },
   {
+    pergunta: "Qual foi a primeira mulher a votar no Brasil, natural do Rio Grande do Norte?",
+    opcoes: [
+      "Celina Guimarães Viana",
+      "Nísia Floresta",
+      "Zila Mamede",
+      "Auta de Souza"
+    ],
+    resposta: "Celina Guimarães Viana"
+  },
+  {
     pergunta: "Quem foi Alberto Maranhão?",
     opcoes: [
       "Um militar da Revolução de 1930",
@@ -48,6 +58,16 @@ export default [
       "Líder estudantil na época da Ditadura Militar"
     ],
     resposta: "Médico e político, conhecido por suas ações em saúde pública"
+  },
+  {
+    pergunta: "O que foi a Insurreição de Beckman, relacionada ao Rio Grande do Norte?",
+    opcoes: [
+      "Uma revolta popular contra a escravidão",
+      "Um conflito armado entre indígenas e colonizadores",
+      "Uma revolução republicana liderada por militares",
+      "Um movimento de resistência contra o domínio holandês",
+    ],
+    resposta: "Um movimento de resistência contra o domínio holandês"
   },
   {
     pergunta: "Café Filho teve destaque por:",

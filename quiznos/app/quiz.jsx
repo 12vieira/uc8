@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
 import QuestionCard from '../components/QuestionCard';
 import questions from '../data/questions';
@@ -10,26 +10,26 @@ export default function QuizScreen() {
   const [respostaSelecionada, setRespostaSelecionada] = useState(null);
 
   const router = useRouter();
-  const perguntaAtual = questions[index];
+  const perguntaAtual = questions[index]; // pega a pergunta atual com base no índice
 
-  const responder = (opcao) => {
-    if (respostaSelecionada) return;
+  const responder = (opcao) => { //
+    if (respostaSelecionada) return; //
     setRespostaSelecionada(opcao);
-    if (opcao === perguntaAtual.resposta) {
+    if (opcao === perguntaAtual.resposta) { //
       setPontuacao(pontuacao + 1);
     }
   };
 
   const proximaPergunta = () => {
-    if (!respostaSelecionada) return;
-    setRespostaSelecionada(null);
+    if (!respostaSelecionada) return; //
+    setRespostaSelecionada(null); 
     if (index + 1 < questions.length) {
       setIndex(index + 1);
     } else {
       router.push({
         pathname: '/resultado',
-        params: {
-          pontuacao: pontuacao.toString(),
+        params: { //
+          pontuacao: pontuacao.toString(), //
           total: questions.length.toString(),
         },
       });
@@ -52,15 +52,45 @@ export default function QuizScreen() {
           {respostaSelecionada === perguntaAtual.resposta ? '✅ Correto!' : '❌ Errado!'}
         </Text>
       )}
-      <Text style={styles.instrucoes}>Clique no botão para próxima pergunta</Text>
-      <Button title="Próxima" onPress={proximaPergunta} />
+      <Pressable style={styles.botao} disabled={!respostaSelecionada} onPress={proximaPergunta}>
+        <Text style={styles.textoBotao}>
+          Próxima Pergunta
+        </Text>
+      </Pressable>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, justifyContent: 'center' },
-  contador: { fontSize: 16, marginBottom: 10 },
-  feedback: { fontSize: 18, marginTop: 10 },
-  instrucoes: { marginTop: 20, fontStyle: 'italic', textAlign: 'center' },
+  container: { 
+    flex: 1, 
+    padding: 20, 
+    justifyContent: 'center' 
+  },
+  contador: { 
+    fontSize: 16, 
+    marginBottom: 10 
+  },
+  feedback: { 
+    fontSize: 18, 
+    marginTop: 10 
+  },
+  instrucoes: { 
+    marginTop: 20, 
+    fontStyle: 'italic', 
+    textAlign: 'center' 
+  },
+  botao: {
+    backgroundColor: '#6200EE',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    marginTop: 20,
+  },
+  textoBotao: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
 });
