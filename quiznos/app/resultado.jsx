@@ -11,7 +11,7 @@ export default function ResultScreen() {
 
   let corNota = '#ff4d4d'; // vermelho
   if (nota >= 7) corNota = '#4CAF50'; // verde
-  else if (nota >= 5) corNota = '#FFEB3B'; // amarelo
+  else if (nota >= 5) corNota = '#FF9800'; // laranja
 
   return (
     <View style={styles.container}>

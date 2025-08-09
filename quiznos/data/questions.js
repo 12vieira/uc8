@@ -100,6 +100,16 @@ export default [
     resposta: "Afogada no mar de Natal, após sofrer um mal súbito"
   },
   {
+  pergunta: "Quem foi Alexandrino de Alencar?",
+  opcoes: [
+    "Militar potiguar que lutou contra os holandeses",
+    "Poeta simbolista do interior do RN",
+    "Empresário e político influente de Macaíba no século XIX",
+    "Fundador da Universidade Federal do RN"
+  ],
+  resposta: "Empresário e político influente de Macaíba no século XIX"
+  },
+  {
     pergunta: "Quem foi Felipe Camarão?",
     opcoes: [
       "Líder indígena que combateu os invasores holandeses no século XVII",
@@ -118,6 +128,16 @@ export default [
       "Criar o jornal literário 'O Poti'"
     ],
     resposta: "Suas poesias simbolistas e religiosas"
+  },
+  {
+    pergunta: "Quem foi Nevaldo Rocha?",
+  opcoes: [
+    "Médico e ativista da saúde pública no Seridó",
+    "Empresário potiguar fundador do grupo Guararapes e das Lojas Riachuelo",
+    "Político responsável pela construção do Teatro Alberto Maranhão",
+    "Escritor regionalista e membro da Academia Norte-Riograndense de Letras"
+  ],
+  resposta: "Empresário potiguar fundador do grupo Guararapes e das Lojas Riachuelo"
   },
   {
   pergunta: "Por que Macaíba/RN se destacou historicamente no século XIX e início do XX?",
