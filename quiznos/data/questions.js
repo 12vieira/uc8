@@ -22,7 +22,7 @@ export default [
   {
     pergunta: "Qual foi a primeira mulher a votar no Brasil, natural do Rio Grande do Norte?",
     opcoes: [
-      "Celina Guimarães Viana",
+      "Celina Guimarães",
       "Nísia Floresta",
       "Zila Mamede",
       "Auta de Souza"
