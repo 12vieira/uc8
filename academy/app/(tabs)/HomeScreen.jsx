@@ -1,4 +1,4 @@
-import React, { useState, useRef, use } from "react";
+import React, { useState, useRef } from "react";
 import {
   View,
   Text,
@@ -117,7 +117,7 @@ export default function HomeScreen({ theme, navigation }) {
             ]}
           >
             <Text style={[styles.modalText, { color: theme.text }]}>
-              Tem certeza que Deseja excluir &#34;{itemSelecionado?.nome} &#34;
+              Tem certeza que Deseja excluir &#34;{itemSelecionado?.nome}&#34;
               ?
             </Text>
             <View style={styles.modalButtons}>
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   title:{
     fontSize:18,
     fontWeight: "bold",
-    marginBottom: 15,
+    marginVertical: 50,
     textAlign: "center",
   },
   input: {

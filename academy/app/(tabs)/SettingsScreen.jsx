@@ -7,10 +7,7 @@ export default function SettingsScreen({theme, toggleTheme, isDarkMode}){
             style={[styles.text, {color: theme.text}]}
             >Configurações</Text>
             <View style={styles.switchContainer}>
-                <Text style={{ color: theme.text, marginRight: 10 }}>
-                {isDarkMode ? 'Tema Escuro' : 'Tema Claro'}
-                </Text>
-
+                <Text style={{color: theme.text, marginRight: 10}} >Tema Escuro</Text>
                 <Switch
                 value={isDarkMode}
                 onValueChange={toggleTheme}

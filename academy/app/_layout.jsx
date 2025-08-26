@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-
 import { Ionicons } from "@expo/vector-icons";
 
 // Importação das telas do aplicativo
@@ -16,24 +15,30 @@ import AddressScreen from "./(tabs)/AddressScreen";
 //Importando tema claro e escuro
 
 import { lightTheme, darkTheme } from "../styles/themes";
+import NearbyGymsScreen from "./(tabs)/NearbyGymScreen";
 
 // Criação dos navegadores
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
+function HomeStack({ theme }) {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="HomeMain"
+        options={{ headerShown: false }}
+        component={(props) => <HomeScreen {...props} theme={theme} />}
+      />
 
-function HomeStack ({theme}) {
-    return(
-        <Stack.Navigator>
-            <Stack.Screen name="HomeMain"
-            options={{headerShown: false}}
-            component={(props) => <HomeScreen {...props} theme={theme} />}
-            />
-        </Stack.Navigator>
-    )
+      <Stack.Screen
+        name="CadastroEndereco"
+        options={{ title: "Cadastro de Endereco" }}
+        component={(props) => <AddressScreen {...props} theme={theme} />}
+      />
+    </Stack.Navigator>
+  );
 }
-
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -56,7 +61,13 @@ export default function App() {
         headerTintColor: theme.text,
       })}
     >
-      <Tab.Screen name="Home">{() => <HomeStack theme={theme} />}</Tab.Screen>
+      <Tab.Screen name="Home" options={{ headerShown: false }}>
+        {() => <HomeStack theme={theme} />}
+      </Tab.Screen>
+
+      <Tab.Screen name="Academias Próximas">
+        {() => <NearbyGymsScreen theme={theme} />}
+      </Tab.Screen>
 
       <Tab.Screen name="Settings">
         {() => (
