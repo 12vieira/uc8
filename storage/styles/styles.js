@@ -61,11 +61,14 @@ export default StyleSheet.create({
   },
 
   actions: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 8,
-    marginTop: 12,
-  },
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  alignItems: 'center',
+  paddingHorizontal: 16,
+  paddingVertical: 12,
+  gap: 12,
+},
 
   secondary: {
     backgroundColor: "#415a77",
