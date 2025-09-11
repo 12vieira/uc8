@@ -2,13 +2,15 @@ import React from "react";
 
 import { Pressable, Text } from "react-native";
 
-@param {string} title
-@param {function} onPress
-@param {object} style
-@param {object} textStyle
-@param {string} accessibilityLabel
-@param {string} accessibilityHint
-@param {string} role
+/**
+ * @param {string} title
+ * @param {function} onPress
+ * @param {object} style
+ * @param {object} textStyle
+ * @param {string} accessibilityLabel
+ * @param {string} accessibilityHint
+ * @param {string} role
+ */
 
 export default function BigButton({
     title,
@@ -16,7 +18,7 @@ export default function BigButton({
     style,
     textStyle,
     accessibilityHint,
-    accessibilityLabel
+    accessibilityLabel,
     role = "button"
 }){
     return(
