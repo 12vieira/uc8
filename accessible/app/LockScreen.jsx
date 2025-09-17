@@ -4,7 +4,7 @@ import * as LocalAuthentication from "expo-local-authentication";
 
 import BigButton from "../components/BigButton";
 
-import { makeHomeStyles } from "../styles/homeStyles";
+import { makeLockStyles } from "../styles/lockStyles";
 
 export default function LockScreen({ theme, fontScale, bigTargets, onUnlock }) {
   const styles = makeLockStyles({ theme, fontScale, bigTargets });
