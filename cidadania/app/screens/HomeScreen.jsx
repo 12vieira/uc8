@@ -11,7 +11,7 @@ export default function HomeScreen() {
   const blocks = [
     { title: "Cadastro", screen: "Cadastro", icon: "person-add" },
     { title: "Configurações", screen: "Configurações", icon: "settings" },
-    { title: "Histórico", screen: "Histórico", icon: "history" },
+    // { title: "Histórico", screen: "Histórico", icon: "history" },
     { title: "Sobre", screen: "Sobre", icon: "info" },
   ];
 
