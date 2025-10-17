@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  Flatlist,
+  FlatList,
   Alert,
   TouchableOpacity,
   Animated,
@@ -151,11 +151,7 @@ function ModernListItem({ item, onEdit, onDelete }) {
       </View>
 
       <Animated.View
-        style={[
-          {
-            transform: [{ translateX: pan }],
-          },
-        ]}
+        style={[{ transform: [{ translateX: pan }] }]}
         {...panResponder.panHandlers}
       >
         <Animated.View
@@ -172,6 +168,7 @@ function ModernListItem({ item, onEdit, onDelete }) {
             style={{ flex: 1, flexDirection: "row", alignItems: "center" }}
             delayLongPress={400}
             activeOpacity={0.7}
+            onLongPress={handleLongPress}
           >
             <View style={{ flex: 1 }}>
               <Text style={styles.name}>{item.name}</Text>
@@ -183,6 +180,56 @@ function ModernListItem({ item, onEdit, onDelete }) {
           </TouchableOpacity>
         </Animated.View>
       </Animated.View>
+    </View>
+  );
+}
+
+export default function HistoryScreen() {
+  const [list, setList] = useState([]);
+  const nav = useNavigation();
+
+  async function load() {
+    const res = await fetchAllCitizens();
+    setList(res);
+  }
+
+  useEffect(() => {
+    const unsubscribe = nav.addListener("focus", () => {
+      load();
+    });
+    load();
+    return unsubscribe;
+  }, [nav]);
+
+  async function handleDelete(id) {
+    await deleteCitizen(id);
+    load();
+  }
+
+  function renderItem({ item }) {
+    return (
+      <ModernListItem
+        item={item}
+        onEdit={() => nav.navigate("Cadastro", { citizen: item })}
+        onDelete={() => handleDelete(item.id)}
+      />
+    );
+  }
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={list}
+        keyExtractor={(i) => String(i.id)}
+        renderItem={renderItem}
+        ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
+        contentContainerStyle={{ padding: 12 }}
+        ListEmptyComponent={() => (
+          <Text style={{ textAlign: "center", marginTop: 20 }}>
+            Nenhum cadastro
+          </Text>
+        )}
+      />
     </View>
   );
 }

@@ -115,7 +115,7 @@ export default function CitizenForm() {
     }
   }
 
- return (
+  return (
     <View style={styles.form}>
       <Text style={styles.label}>CPF *</Text>
       <MaskedTextInput

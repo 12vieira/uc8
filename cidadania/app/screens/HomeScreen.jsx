@@ -3,7 +3,6 @@ import { useNavigation } from "@react-navigation/native";
 import { COLORS } from "../../styles/colors";
 import styles from "../../styles/homeStyles";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Background } from "@react-navigation/elements";
 
 export default function HomeScreen() {
   const nav = useNavigation();
@@ -11,7 +10,7 @@ export default function HomeScreen() {
   const blocks = [
     { title: "Cadastro", screen: "Cadastro", icon: "person-add" },
     { title: "Configurações", screen: "Configurações", icon: "settings" },
-    // { title: "Histórico", screen: "Histórico", icon: "history" },
+    { title: "Histórico", screen: "Histórico", icon: "history" },
     { title: "Sobre", screen: "Sobre", icon: "info" },
   ];
 
@@ -29,7 +28,7 @@ export default function HomeScreen() {
             ]}
             onPress={() => nav.navigate(b.screen)}
           >
-            <MaterialIcons name={b.icon} size={42} color="#064E2E" />
+            <MaterialIcons naem={b.icon} size={42} color="#064E2E" />
             <Text style={styles.blockText}>{b.title}</Text>
           </TouchableOpacity>
         ))}

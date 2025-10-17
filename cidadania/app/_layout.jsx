@@ -4,7 +4,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import HomeScreen from "./screens/HomeScreen";
 import CadastroScreen from "./screens/CadastroScreen";
-// import HistoryScreen from "./screens/HistoryScreen";
+import HistoryScreen from "./screens/HistoryScreen";
 import ConfigsScreen from "./screens/ConfigsScreen";
 import AboutScreen from "./screens/AboutScreen";
 
@@ -36,7 +36,7 @@ export default function App() {
         >
           <Drawer.Screen name="Home" component={HomeScreen} />
           <Drawer.Screen name="Cadastro" component={CadastroScreen} />
-          {/* <Drawer.Screen name="Histórico" component={HistoryScreen} /> */}
+          <Drawer.Screen name="Histórico" component={HistoryScreen} />
           <Drawer.Screen name="Configurações" component={ConfigsScreen} />
           <Drawer.Screen name="Sobre" component={AboutScreen} />
         </Drawer.Navigator>
